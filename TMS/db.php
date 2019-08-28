@@ -5,9 +5,9 @@
  * Date: 12/4/2017
  * Time: 3:14 PM
  */
-$servername = "172.19.10.20";
+$servername = "localhost";
 $username = "root";
-$password = "inoc@123";
+$password = "";
 $dbname = "ims_inoc";
 
     //create connection

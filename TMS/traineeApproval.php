@@ -6,7 +6,7 @@
 $allerror = $T_id_err = $Title_err = $Full_Name_err = $Name_with_Initials_err = $NIC_err = $Age_err = $Gender_err = $DOB_err = $Add_Line1_err = $Add_Line2_err = $Add_Line3_err = $Temp_Add_Line1_err = $Temp_Add_Line2_err = $Temp_Add_Line3_err = $Contact_Number1_err = $Contact_Number2_err = $E_Mail_err = $tblTrainingInstituteID_err = $ProgramName_err = $tblCourseID_err = $Batch_err = $Year_err = $Contact_Person_err = $Contact_number_err = $Relationship_err = $Address_err = $tblBankID_err = $Name_as_Bank_err = $Bank_Account_number_err = $flag_err = $branch_err = $joinDate_err = $endDate_err = $salary_err =$error=$error4= "";
 
 
-$T_id = $Title = $Full_Name = $Name_with_Initials = $NIC = $Age = $Gender = $DOB = $Add_Line1 = $Add_Line2 = $Add_Line3 = $Temp_Add_Line1 = $Temp_Add_Line2 = $Temp_Add_Line3 = $Contact_Number1 = $Contact_Number2 = $E_Mail = $tblTrainingInstituteID = $tblCourseID = $Batch = $Year = $Contact_Person = $Contact_number = $Relationship = $Address = $tblBankID = $Name_as_Bank = $Bank_Account_number = $flag = $jdate = $edate = $salary = $programName = $branch = "";
+$T_id = $division = $Title = $Full_Name = $Name_with_Initials = $NIC = $Age = $Gender = $DOB = $Add_Line1 = $Add_Line2 = $Add_Line3 = $Temp_Add_Line1 = $Temp_Add_Line2 = $Temp_Add_Line3 = $Contact_Number1 = $Contact_Number2 = $E_Mail = $tblTrainingInstituteID = $tblCourseID = $Batch = $Year = $Contact_Person = $Contact_number = $Relationship = $Address = $tblBankID = $Name_as_Bank = $Bank_Account_number = $flag = $jdate = $edate = $salary = $programName = $branch = "";
 
 
 // Check connection
@@ -1099,6 +1099,118 @@ $con->close();
                                 <span class="text-danger"><?php echo $salary_err; ?></span>
                             <?php } ?>
                         </div>
+
+
+    <!-- New ID select.................................................  -->
+
+
+
+ <th style="padding-top: 20px;"><label>Division</label>
+              <td style="width: 200px; padding-right: 30px;padding-top: 20px;padding-left: 10px;"><select class="form-control" name="ID_number" id="ID_number">
+                <option>--SELECT--</option>
+                <?php
+                $sql = "SELECT *  FROM new_idcaed WHERE isactive = 'active' ";
+                $division_data = $con->query($sql);
+                if ($division_data->num_rows >= 1) :
+
+                  while ($row = mysqli_fetch_assoc($division_data)) :?>
+                  <option value="<?php echo $row["ID_number"]?>"><?php echo $row["ID_number"]?></option>
+                  <?php
+
+                //  $division= $_POST['v_divi'];
+                endwhile;
+              endif;
+ $division= $_POST['ID_number'];
+
+$sql1 = " UPDATE `new_idcaed` SET `Trainee_ID`='$division',`isactive`='notactive'WHERE ID_number = '1' ";
+
+            
+
+           if ($con->query($sql1) === TRUE) {
+                   echo "New record created successfully";}
+
+else echo "successfully F***";
+
+
+               ?>
+              
+            </select></td></th>
+
+
+ <?php
+           
+
+      //  $division = $_POST["ID_number"];
+
+
+
+             // if(isset($_POST["btnSubmit"])){
+              
+              //$division= '1';
+             
+            //$division1= $_POST['v_divi'];
+
+
+
+$sql1 = " UPDATE `new_idcaed` SET `Trainee_ID`='$division',`isactive`='notactive'WHERE ID_number = '$division' ";
+
+            
+
+           if ($con->query($sql1) === TRUE) {
+                   echo "New record created successfully";}
+
+else echo "successfully F***";
+
+//}
+ ?>
+
+    <!-- New Id Select.................................................  -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
                     </div>
                 </div>
                 <br/>

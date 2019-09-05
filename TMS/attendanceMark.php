@@ -67,20 +67,42 @@ if (isset($_POST['btnSubmit'])) {
             if (empty($search_NIC)) {
 
                 $sql = "SELECT * FROM `tbl_trainee` WHERE `Trainee_ID` like '%$search_traineeId1' ";
-
+				//$sql1 = "SELECT * FROM `new_idcaed` WHERE `Trainee_ID` = '$tblID' ";
                 $resultSet = $con->query($sql);
+                //$resultSet1 = $con1->query($sql1);
 
                 if ($resultSet->num_rows == 1) {
 
                     $rows = mysqli_fetch_assoc($resultSet);
+                   // $rows1 = mysqli_fetch_assoc($resultSet1);
+
+					//$ID = $rows1['ID_number'];
+					$tblID = $rows['tblTraineeID'];
+
+
+					$sql1 = "SELECT * FROM `new_idcaed` WHERE `Trainee_ID` = '$tblID' ";
+					$resultSet1 = $con->query($sql1);
+
+					 $rows1 = mysqli_fetch_assoc($resultSet1);
+
+					$ID = $rows1['ID_number'];
+
+
+
+
                     $traineeId1 = $rows['Trainee_ID'];
 
                     $name = $rows['Full_Name'];
 
                     $NIC = $rows['NIC'];
                     $DivID = $rows['tblDivisionID'];
+                    
 
+//$resultSet1 = $con1->query($sql1);
 
+//$rows1 = mysqli_fetch_assoc($resultSet1);
+
+//$ID = $rows1['ID_number'];
 
                 }else{
                     $error = "Cann't find Trainee ";
@@ -93,16 +115,45 @@ if (isset($_POST['btnSubmit'])) {
 
                $resultSet = $con->query($sql);
 
+
                if ($resultSet->num_rows == 1) {
 
-                $rows = mysqli_fetch_assoc($resultSet);
-                $traineeId1 = $rows['Trainee_ID'];
+               // $rows = mysqli_fetch_assoc($resultSet);
+               
+               // $traineeId1 = $rows['Trainee_ID'];
 
-                $name = $rows['Full_Name'];
+               // $name = $rows['Full_Name'];
 
-                $NIC = $rows['NIC'];
-                $DivID = $rows['tblDivisionID'];
-                $tbl_attendenceID=$rows['tbl_attendenceID'];
+               // $NIC = $rows['NIC'];
+               // $DivID = $rows['tblDivisionID'];
+              //  $tbl_attendenceID=$rows['tbl_attendenceID'];
+
+$rows = mysqli_fetch_assoc($resultSet);
+                   // $rows1 = mysqli_fetch_assoc($resultSet1);
+
+                    //$ID = $rows1['ID_number'];
+                    $tblID = $rows['tblTraineeID'];
+
+
+                    $sql1 = "SELECT * FROM `new_idcaed` WHERE `Trainee_ID` = '$tblID' ";
+                    $resultSet1 = $con->query($sql1);
+
+                     $rows1 = mysqli_fetch_assoc($resultSet1);
+
+                    $ID = $rows1['ID_number'];
+
+
+
+
+                    $traineeId1 = $rows['Trainee_ID'];
+
+                    $name = $rows['Full_Name'];
+
+                    $NIC = $rows['NIC'];
+                    $DivID = $rows['tblDivisionID'];
+
+
+
                    // echo "id" . $DivID;
 
                 
@@ -288,16 +339,17 @@ if ($con->connect_error) {
 
             $image_path=$row['profile_img'];
 
-            if (!empty($trainee_id_error) || !empty($NIC_error) || !empty($error)) {?>
-            <img name="imgProfile" hidden="hidden" />
-            <?php  }else{ ?>
+            //if (!empty($trainee_id_error) || !empty($NIC_error) || !empty($error)) {?>
+           <!-- <img name="imgProfile" hidden="hidden" />
+            <?php  }{ ?>  -->
 
             <img name="imgProfile" src="<?php echo "Images/" . $image_path;  ?>"
             class="img-thumbnail thumb-xl img-thumbnail m-b-10"
-            alt="profile-image" style="height: 150px; width: 130px; margin-top: 70px;"/>
+            alt="profile-image" style="height: 150px; width: 130px; margin-top: 70px;"/>  <?php echo $ID ?>
             <?php
+            
         }
-    }
+    //}
 }?>
 
 <!-- end image validation -->       
@@ -340,6 +392,8 @@ if ($con->connect_error) {
                             </td>
                             <?php } ?>
                         </div>
+
+                        
 
                         <div class="col-sm-4">
                             <?php if (empty($trainee_id_error) && empty($NIC_error) && empty($error)) { ?>

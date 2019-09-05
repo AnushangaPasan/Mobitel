@@ -8,7 +8,8 @@ if (isset($_GET["idStatus"])) {
 
 
     $sql = "UPDATE tbl_trainee SET flag='" . "INACTIVE" . "' WHERE tblTraineeID ='" . $_GET["idStatus"] . "' ";
-    if ($con->query($sql) === TRUE) {
+    $sql1 = "UPDATE new_idcaed SET isactive='" . "active" . "' WHERE Trainee_ID ='" . $_GET["idStatus"] . "' ";
+    if (($con->query($sql) === TRUE) AND ($con->query($sql1) === TRUE)) {
 
         $msg = "Successfully inactived";
         header("Location:rptTraineeUpdateSearch.php");

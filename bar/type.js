@@ -39,7 +39,7 @@ $(document).ready(function(){
 				data: chartdatanew,
 			options: {
         scales: {
-            yAxes: [{
+            yAxes: [{ 
                 ticks: {
                     beginAtZero: true
                 }

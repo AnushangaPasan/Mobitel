@@ -1,10 +1,10 @@
 <?php
 
 //database
-define('DB_HOST', '172.19.10.20');
-define('DB_USERNAME', 'root');
-define('DB_PASSWORD', 'inoc@123');
-define('DB_NAME', 'ims_inoc');
+define('DB_HOST', 'localhost');
+			define('DB_USERNAME', 'root');
+			define('DB_PASSWORD', '');
+			define('DB_NAME', 'ims_inoc');
 
 //get connection
 $mysqli = new mysqli(DB_HOST, DB_USERNAME, DB_PASSWORD, DB_NAME);
@@ -16,9 +16,13 @@ if(!$mysqli){
 
 //setting header to json
 header('Content-Type: application/json');
-$query="SELECT programName,count(tblTraineeID) as type1
-from tbl_trainee  
-group by programName;"; 
+$query="SELECT *, 
+COUNT(tblTraineeID) AS type2,
+COUNT(IF(programName ='DIPLOMA', tblTraineeID, NULL)) AS type3,
+COUNT(IF(programName ='CERTIFICATE', tblTraineeID, NULL)) AS type1,
+COUNT(IF(programName ='DEGREE', tblTraineeID, NULL)) AS type4  
+FROM tbl_trainee 
+GROUP BY YEAR(jdate);";  
 	$result=$mysqli->query($query)
 	or die ($mysqli->error);
 
@@ -31,7 +35,12 @@ while($row=$result->fetch_assoc()) //mysql_fetch_array($sql)
 {//$type=$row['a.Name'];
 $type=$row['programName'];
 $type1=$row['type1'];
-
+$type=$row['jdate'];
+$date=explode(" ",$type);
+$year=explode('-',$date[0]);
+$type2=$row['type2'];
+$type3=$row['type3'];
+$type4=$row['type4'];
 //echo $year[0];
 //echo $year[1];
 
@@ -42,7 +51,7 @@ $type1=$row['type1'];
 
  
 // //each item from the rows go in their respective vars and into the data array
-$data[] = array('type'=> $type,'type1'=> $type1);
+$data[] = array('type'=> $year[0],'type0'=> $type0,'type1'=> $type1,'type2'=> $type2,'type3'=> $type3,'type4'=> $type4);
 } 
 
 //the data array goes into the response

@@ -47,7 +47,7 @@ if ($accesspoint_data->num_rows >= 1) {
 <body>
 
 
-    <nav class="navbar navbar-default navbar-fixed-top " color="red">
+    <nav class="navbar navbar-default navbar-fixed-top">
         <div class="container-fluid">
             <!-- Brand and toggle get grouped for better mobile display -->
             <div class="navbar-header ">
@@ -58,7 +58,7 @@ if ($accesspoint_data->num_rows >= 1) {
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand" href="mobitel.php">Mobitel</a>
+            <a class="navbar-brand" href="#">Mobitel</a>
         </div>
 
         <!-- Collect the nav links, forms, and other content for toggling -->
@@ -74,7 +74,7 @@ if ($accesspoint_data->num_rows >= 1) {
                     aria-expanded="false">Trainee<span class="caret"></span></a>
                     <ul class="dropdown-menu">
                         <li><a href="traineeRegister.php">Register</a></li>
-						<li><a href="Evaluation.php">Evaluation</a></li>
+						<li><a href="https://www.classmarker.com/online-test/start/?quiz=3vm5a73dcb8afed7">Evaluation</a></li>
 
                     </ul>
                 </li>
@@ -121,10 +121,8 @@ if ($accesspoint_data->num_rows >= 1) {
             <li><a href="rptTrainee.php">Trainee Report</a></li>
             <li><a href="rptAttendance.php">Attendance Report</a></li>
             <li><a href="visualization.php">Visualization</a></li>
-            <li><a href="feedback.php">feedback</a></li>
-            <li><a href="allowance.php">allowance</a></li>
-            <li><a href="apply.php">appyly</a></li>
-
+             <li><a href="new.php">allowance</a></li>
+              <li><a href="allo.php">allowance2</a></li>
         </ul>
     </li>
 
